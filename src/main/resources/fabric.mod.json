@@ -29,6 +29,7 @@
   "suggests": {
     "itemscroller": "*",
     "inventoryprofilesnext": "*",
-    "libipn": "*"
+    "libipn": "*",
+    "tweakeroo": "*"
   }
 }

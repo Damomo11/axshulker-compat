@@ -5,7 +5,8 @@
   "compatibilityLevel": "JAVA_21",
   "client": [
     "itemscroller.InventoryUtilsMixin",
-    "ipn.ItemTypeMixin"
+    "ipn.ItemTypeMixin",
+    "tweakeroo.InventoryUtilsMixin"
   ],
   "injectors": {
     "defaultRequire": 1

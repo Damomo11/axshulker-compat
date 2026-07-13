@@ -28,6 +28,9 @@ public final class StackBridgeMixinPlugin implements IMixinConfigPlugin {
             return FabricLoader.getInstance().isModLoaded("inventoryprofilesnext")
                 || FabricLoader.getInstance().isModLoaded("ipn");
         }
+        if (mixinClassName.contains(".tweakeroo.")) {
+            return FabricLoader.getInstance().isModLoaded("tweakeroo");
+        }
         return true;
     }
 
