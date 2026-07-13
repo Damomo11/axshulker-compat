@@ -26,7 +26,6 @@ public final class StackBridgeMixinPlugin implements IMixinConfigPlugin {
         }
         if (mixinClassName.contains(".ipn.")) {
             return FabricLoader.getInstance().isModLoaded("inventoryprofilesnext")
-                || FabricLoader.getInstance().isModLoaded("libipn")
                 || FabricLoader.getInstance().isModLoaded("ipn");
         }
         return true;

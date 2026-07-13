@@ -6,9 +6,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import net.minecraft.component.ComponentMap;
-import net.minecraft.component.MergedComponentMap;
-import net.minecraft.item.Item;
+import net.minecraft.core.component.DataComponentMap;
+import net.minecraft.core.component.PatchedDataComponentMap;
+import net.minecraft.world.item.Item;
 
 import com.momo.stackbridge.identity.StackNormalizer;
 import com.momo.stackbridge.integration.ItemTypeBridgeAccess;
@@ -19,7 +19,7 @@ public abstract class ItemTypeMixin implements ItemTypeBridgeAccess {
     public abstract Item getItem();
 
     @Shadow(remap = false)
-    public abstract MergedComponentMap getTag();
+    public abstract PatchedDataComponentMap getTag();
 
     @Inject(method = "equals", at = @At("HEAD"), cancellable = true, remap = false)
     private void stackidentitybridge$equals(Object other, CallbackInfoReturnable<Boolean> cir) {
@@ -56,7 +56,7 @@ public abstract class ItemTypeMixin implements ItemTypeBridgeAccess {
     }
 
     @Override
-    public ComponentMap stackidentitybridge$components() {
+    public DataComponentMap stackidentitybridge$components() {
         return this.getTag();
     }
 }

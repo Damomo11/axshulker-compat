@@ -8,13 +8,13 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.util.Identifier;
+import net.minecraft.resources.Identifier;
 
 import com.momo.stackbridge.AxShulkerCompat;
 
 public final class BridgeConfig {
     private static final String FILE_NAME = "ignored-components.txt";
-    private static final Identifier CUSTOM_DATA = Identifier.of("minecraft", "custom_data");
+    private static final Identifier CUSTOM_DATA = Identifier.fromNamespaceAndPath("minecraft", "custom_data");
     private static volatile BridgeConfig instance = new BridgeConfig(true, Set.of(CUSTOM_DATA));
 
     private final boolean enabled;

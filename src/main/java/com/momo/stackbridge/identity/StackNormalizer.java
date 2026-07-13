@@ -5,14 +5,14 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import net.minecraft.block.ShulkerBoxBlock;
-import net.minecraft.component.ComponentMap;
-import net.minecraft.component.ComponentType;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.Registries;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.component.DataComponentMap;
+import net.minecraft.core.component.DataComponentType;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.ShulkerBoxBlock;
 
 import com.momo.stackbridge.config.BridgeConfig;
 
@@ -42,12 +42,12 @@ public final class StackNormalizer {
         return normalizedComponentsHash(stack.getComponents(), isShulkerBox(stack));
     }
 
-    public static int normalizedComponentsHash(ComponentMap components, boolean ignoreCustomData) {
+    public static int normalizedComponentsHash(DataComponentMap components, boolean ignoreCustomData) {
         if (components == null) {
             return 0;
         }
         int hash = 1;
-        for (ComponentType<?> type : components.getTypes().stream().sorted(Comparator.comparing(String::valueOf)).toList()) {
+        for (DataComponentType<?> type : components.keySet().stream().sorted(Comparator.comparing(String::valueOf)).toList()) {
             if (ignoreCustomData && isIgnoredComponent(type)) {
                 continue;
             }
@@ -57,17 +57,17 @@ public final class StackNormalizer {
         return hash;
     }
 
-    public static boolean normalizedComponentsEqual(ComponentMap left, ComponentMap right, boolean ignoreCustomData) {
+    public static boolean normalizedComponentsEqual(DataComponentMap left, DataComponentMap right, boolean ignoreCustomData) {
         if (left == right) {
             return true;
         }
         if (left == null || right == null) {
             return false;
         }
-        Set<ComponentType<?>> keys = new HashSet<>();
-        keys.addAll(left.getTypes());
-        keys.addAll(right.getTypes());
-        for (ComponentType<?> type : keys) {
+        Set<DataComponentType<?>> keys = new HashSet<>();
+        keys.addAll(left.keySet());
+        keys.addAll(right.keySet());
+        for (DataComponentType<?> type : keys) {
             if (ignoreCustomData && isIgnoredComponent(type)) {
                 continue;
             }
@@ -78,8 +78,8 @@ public final class StackNormalizer {
         return true;
     }
 
-    public static boolean isIgnoredComponent(ComponentType<?> type) {
-        Identifier id = Registries.DATA_COMPONENT_TYPE.getId(type);
+    public static boolean isIgnoredComponent(DataComponentType<?> type) {
+        Identifier id = BuiltInRegistries.DATA_COMPONENT_TYPE.getKey(type);
         return id != null && BridgeConfig.current().ignoredComponents().contains(id);
     }
 
