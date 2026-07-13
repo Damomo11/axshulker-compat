@@ -6,6 +6,7 @@ Targets:
 - Minecraft 1.21.8 to 1.21.11
 - Item Scroller
 - Inventory Profiles Next
+- validated against Item Scroller 26.1.x and 26.2 hooks
 
 Current status:
 - project scaffold created

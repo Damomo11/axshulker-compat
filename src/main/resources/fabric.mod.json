@@ -28,6 +28,7 @@
   },
   "suggests": {
     "itemscroller": "*",
-    "inventoryprofilesnext": "*"
+    "inventoryprofilesnext": "*",
+    "libipn": "*"
   }
 }
