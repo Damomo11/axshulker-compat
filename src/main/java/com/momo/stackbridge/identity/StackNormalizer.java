@@ -32,7 +32,27 @@ public final class StackNormalizer {
     }
 
     public static boolean sameIdentity(ItemStack left, ItemStack right) {
-        return StackFingerprint.of(normalize(left)).equals(StackFingerprint.of(normalize(right)));
+        if (left == right) {
+            return true;
+        }
+        if (left == null || right == null) {
+            return false;
+        }
+        ItemStack leftNormalized = normalize(left);
+        ItemStack rightNormalized = normalize(right);
+        if (leftNormalized.isEmpty() || rightNormalized.isEmpty()) {
+            return leftNormalized.isEmpty() && rightNormalized.isEmpty();
+        }
+        Item leftItem = leftNormalized.getItem();
+        Item rightItem = rightNormalized.getItem();
+        if (leftItem != rightItem) {
+            return false;
+        }
+        return normalizedComponentsEqual(
+            leftNormalized.getComponents(),
+            rightNormalized.getComponents(),
+            isShulkerBoxItem(leftItem)
+        );
     }
 
     public static int normalizedComponentsHash(ItemStack stack) {
