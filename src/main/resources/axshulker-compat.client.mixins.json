@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "com.momo.stackbridge.mixin",
+  "plugin": "com.momo.stackbridge.mixin.StackBridgeMixinPlugin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "itemscroller.InventoryUtilsMixin",
+    "ipn.ItemTypeMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

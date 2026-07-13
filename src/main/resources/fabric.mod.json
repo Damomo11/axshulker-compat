@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "axshulker-compat",
+  "version": "${version}",
+  "name": "AxShulker Compat",
+  "description": "Client-side compatibility bridge for AxShulkers and inventory mods.",
+  "authors": [
+    "Damomo1"
+  ],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "com.momo.stackbridge.AxShulkerCompat"
+    ],
+    "client": [
+      "com.momo.stackbridge.AxShulkerCompatClient"
+    ]
+  },
+  "mixins": [
+    "axshulker-compat.client.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.14",
+    "minecraft": ">=1.21.8 <=1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "itemscroller": "*",
+    "inventoryprofilesnext": "*"
+  }
+}
