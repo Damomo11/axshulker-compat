@@ -17,7 +17,7 @@ public abstract class InventoryUtilsMixin {
         },
         at = @At(
             value = "INVOKE",
-            target = "Lfi/dy/masa/malilib/util/InventoryUtils;areStacksEqualIgnoreDurability(Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/ItemStack;)Z",
+            target = "Lfi/dy/masa/malilib/util/InventoryUtils;areStacksEqualIgnoreDurability(Lnet/minecraft/class_1799;Lnet/minecraft/class_1799;)Z",
             remap = false
         ),
         remap = false,
